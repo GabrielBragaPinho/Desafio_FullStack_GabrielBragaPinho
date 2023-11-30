@@ -1,9 +1,17 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.js'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from "react-router-dom";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+import App from './App.tsx';
+import { ClientProvider } from './providers/ClientContext/ClientContext.tsx';
+
+
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <BrowserRouter>
+      <ClientProvider>
+        <App />
+      </ClientProvider>
+    </BrowserRouter>
+  </React.StrictMode>
+);
