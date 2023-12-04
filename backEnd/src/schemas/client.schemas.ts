@@ -5,7 +5,7 @@ const clientSchema = z.object({
     name: z.string().max(45),
     email: z.string().max(45).email(),
     password: z.string().max(120),
-    phoneNumber: z.string().min(10),
+    phoneNumber: z.string().max(15),
     registeredAt: z.string().or(z.date()),
 })
 

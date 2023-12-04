@@ -19,5 +19,6 @@ const contactCreateSchema = contactSchema.omit({
 
 const contactReturnSchema = contactSchema;
 const contactReadSchema = contactReturnSchema.array();
+const contactUpdateSchema = contactCreateSchema.partial();
 
-export { contactSchema, contactCreateSchema, contactReturnSchema, contactReadSchema };
+export { contactSchema, contactCreateSchema, contactReturnSchema, contactReadSchema, contactUpdateSchema };

@@ -20,4 +20,12 @@ const destroy = async (req:Request, res:Response): Promise<Response> => {
     return res.status(204).json();
 };
 
-export default { create, read, destroy };
+const partialUpdate = async (req:Request, res:Response): Promise<Response> => {
+    const { foundContact } = res.locals;
+    const { body } = req;
+
+    const contact: Contact = await contactServices.partialUpdate(foundContact, body);
+    return res.status(200).json(contact);
+};
+
+export default { create, read, destroy, partialUpdate };

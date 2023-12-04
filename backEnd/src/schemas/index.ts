@@ -1,5 +1,7 @@
 import { clientCreateSchema, clientReadSchema, clientReturnSchema, clientSchema, clientUpdateSchema } from "./client.schemas";
-import { contactCreateSchema, contactReadSchema, contactReturnSchema, contactSchema } from "./contact.schemas";
+import { contactCreateSchema, contactReadSchema, contactReturnSchema, contactSchema, contactUpdateSchema } from "./contact.schemas";
+import { sessionSchema } from "./session.schema";
+
 
 export {
     clientCreateSchema,
@@ -10,5 +12,7 @@ export {
     contactCreateSchema,
     contactReadSchema,
     contactReturnSchema,
-    contactSchema
+    contactSchema,
+    contactUpdateSchema,
+    sessionSchema
 };

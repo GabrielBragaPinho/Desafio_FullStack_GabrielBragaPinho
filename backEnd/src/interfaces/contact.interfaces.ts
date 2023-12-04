@@ -8,7 +8,8 @@ import { contactCreateSchema, contactReadSchema, contactReturnSchema } from "../
 type ContactCreate = z.infer<typeof contactCreateSchema>;
 type ContactRead = z.infer<typeof contactReadSchema>;
 type ContactReturn = z.infer<typeof contactReturnSchema>;
+type ContactUpdate = DeepPartial<Contact>;
 
 type ContactRepo = Repository<Contact>;
 
-export { ContactCreate, ContactRead, ContactReturn, ContactRepo };
+export { ContactCreate, ContactRead, ContactReturn, ContactRepo, ContactUpdate };

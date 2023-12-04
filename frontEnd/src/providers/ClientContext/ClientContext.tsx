@@ -1,6 +1,12 @@
-import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { createContext, useState, useEffect } from "react";
+
 import { api } from "../../service/api";
+import { TLoginForm } from "../../pages/login/loginFormSchema";
+import { TRegisterForm } from "../../pages/register/registerFormSchema";
+import { IClient, IClientProviderProps, IClientContext } from "./@types";
+import { TFormClientEdit } from "../../components/EditClientForm/editClientFormSchema";
+
 
 export const ClientContext = createContext({} as IClientContext);
 
@@ -10,7 +16,6 @@ export const ClientProvider = ({ children }: IClientProviderProps) => {
     const [isClientLoggedIn, setIsClientLoggedIn] = useState(false);
 
     const navigate = useNavigate();
-    const currentPath = window.location.pathname;
 
     useEffect(() => {
         const token = localStorage.getItem("@TOKEN");
@@ -19,13 +24,12 @@ export const ClientProvider = ({ children }: IClientProviderProps) => {
         const loadClient = async () => {
           try {
             setLoading(true);
-            const { data } = await api.get(`/users/${id}`, {
+            const { data } = await api.get(`/clients/${id}`, {
               headers: {
                 Authorization: `Bearer ${token}`,
               },
             });
             setClient(data);
-            navigate(currentPath);
           } catch (error) {
             console.log(error);
           } finally {
@@ -40,11 +44,12 @@ export const ClientProvider = ({ children }: IClientProviderProps) => {
       const clientLogin = async (formData: TLoginForm) => {
         try {
           setLoading(true);
-          const { data } = await api.post<IClientLoginResponse>("/login", formData);
-          localStorage.setItem("@TOKEN", data.accessToken);
-          localStorage.setItem("@CLIENTID", JSON.stringify(data.client.id));
-          setClient(data.user);
-          navigate("/dashboard");
+          const response = await api.post("/login", formData);
+          console.log(response.data)
+          localStorage.setItem("@TOKEN", response.data.token);
+          // localStorage.setItem("@CLIENTID", JSON.stringify(data.client.id));
+          // setClient(data.client);
+          navigate("/hub");
           setIsClientLoggedIn(true)
         } catch (error) {
           console.log(error);
@@ -56,8 +61,8 @@ export const ClientProvider = ({ children }: IClientProviderProps) => {
       const clientRegister = async (formData: TRegisterForm) => {
         try {
           setLoading(true);
-          await api.post("/users", formData);
-          navigate("/Login");
+          await api.post("/clients", formData);
+          navigate("/login");
         } catch (error) {
           console.log(error);
         } finally {
@@ -70,7 +75,25 @@ export const ClientProvider = ({ children }: IClientProviderProps) => {
         localStorage.removeItem("@TOKEN");
         localStorage.removeItem("@CLIENTID");
         setIsClientLoggedIn(false);
-        navigate("/home");
+        navigate("/");
+      };
+
+      const clientUpdate = async (formData: TFormClientEdit) => {
+        const token = localStorage.getItem("@TOKEN");
+        const id = localStorage.getItem("@CLIENTID");
+        try {
+          setLoading(true);
+          const response = await api.patch(
+            `/clients/${id}`,
+            { ...formData, owner: client?.name, clientId: client?.id },
+            { headers: { Authorization: `Bearer ${token}` }, }
+          );
+            setClient(response.data);
+          } catch (error) {
+            console.log(error);
+          } finally {
+            setLoading(false);
+        };
       };
 
       return (
@@ -80,6 +103,7 @@ export const ClientProvider = ({ children }: IClientProviderProps) => {
             clientRegister,
             clientLogin,
             clientLogout,
+            clientUpdate,
             loading,
             setLoading,
             isClientLoggedIn,
