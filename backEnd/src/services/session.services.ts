@@ -17,7 +17,7 @@ const create = async ({ email, password }: SessionCreate): Promise<SessionReturn
     { subject: foundClient.id.toString(), expiresIn: process.env.EXPIRES_IN! }
     );
 
-    return { token };
+    return { token, foundClient };
 };
 
 export default { create };
