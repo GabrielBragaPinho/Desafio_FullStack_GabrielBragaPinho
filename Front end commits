@@ -1,0 +1,29 @@
+commit 26ef62f907041ae89318bc158d7a135b61d2c4ad (HEAD -> main, origin/main)
+Author: Gabriel Braga Pinho <gabrielpsnacc03@gmail.com>
+Date:   Sun Jan 7 00:26:06 2024 -0300
+
+    fix(routes): Added retrieve route for contact and fixed the delete route for contacts.
+
+commit 80e067c9286210e6444aa507bc04715b064dfab8
+Author: Gabriel Braga Pinho <gabrielpsnacc03@gmail.com>
+Date:   Sun Jan 7 00:24:04 2024 -0300
+
+    fix(functionality fixes): fixes regarding get, delete and retrieve routes, contact add and list display fixes.
+
+commit 5fbe51ca1a1c79b231f45d15d5beda6a28152679
+Author: Gabriel Braga Pinho <gabrielpsnacc03@gmail.com>
+Date:   Mon Dec 4 00:50:52 2023 -0300
+
+    Application mostly done, needs some ajustments.
+
+commit e0cd6b3e0b16706200f52358e3940c962dcb910b
+Author: Gabriel Braga Pinho <gabrielpsnacc03@gmail.com>
+Date:   Thu Nov 30 13:09:58 2023 -0300
+
+    Various front end updates
+
+commit 038e001a8b27a1f229e551aa053d78922f113abf
+Author: Gabriel Braga Pinho <gabrielpsnacc03@gmail.com>
+Date:   Wed Nov 29 10:25:49 2023 -0300
+
+    Backend added, frontEnd initialized
