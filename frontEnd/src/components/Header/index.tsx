@@ -36,12 +36,6 @@ export const Header = () => {
             <button className="text-green2 bg-greenbg text-base font-inter font-bold w-[157px] h-[54px]">
               DATA
             </button>
-              <button className="text-rmred bg-background hover:bg-rmredbg text-base font-inter font-bold w-[157px] h-[54px]">
-                LOGIN
-              </button>
-              <button className="text-rmred bg-background hover:bg-rmredbg text-base font-inter font-bold w-[157px] h-[54px]">
-                REGISTER
-              </button>
               <button onClick={ clientLogout } className="text-green2 bg-background hover:bg-greenbg text-base font-inter font-bold w-[157px] h-[54px]">
                 LOGOUT
               </button>

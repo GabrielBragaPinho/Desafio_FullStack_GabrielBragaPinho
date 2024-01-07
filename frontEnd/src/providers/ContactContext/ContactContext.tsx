@@ -1,38 +1,39 @@
-import { createContext, useState, useEffect, ReactNode, useContext } from "react";
+import { createContext, useState, useContext } from "react";
 
 import { api } from "../../service/api";
-import { IContactContext } from "./@types";
-import { ClientContext } from "../ClientContext/ClientContext";
 import { TFormNewContact } from "../../components/AddContactForm/newContactSchema";
 import { TFormContactEdit } from "../../components/EditContactForm/editContactFormSchema";
-import { IContact } from "./@types";
+import { IContact, IContactContext, IContactProviderProps } from "./@types";
 
 export const ContactContext = createContext({} as IContactContext);
 
-export const ContactProvider = ({ children }: { children: ReactNode }) => {
+export const ContactProvider = ({ children }: IContactProviderProps) => {
     const [contacts, setContacts] = useState<IContact[]>([]);
     const [currentID, setCurrentID] = useState(0);
     const [currentContact, setCurrentContact] = useState<IContact | null>(null);
 
-    const { client, setLoading } = useContext(ClientContext);
-
     const token = localStorage.getItem("@TOKEN");
+
 
     const getContacts = async () => {
         try {
-            setLoading(true);
-            const response = await api.get("/contacts");
-            setContacts(response.data);
+            const { data } = await api.get(`/contacts`, {
+                headers: {
+                Authorization: `Bearer ${token}`,
+                },
+            });
+            setContacts(data);
         } catch (error) {
             console.log(error);
-        } finally {
-            setLoading(false);
-        };
-    };
+    };}
 
     const getSpecificContact = async (id: number | undefined) => {
         try {
-            const response = await api.get(`/contacts/${id}`);
+            const response = await api.get(`/contacts/${id}`, {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+            });
             setCurrentContact(response.data);
         } catch (error) {
             console.log(error);
@@ -41,65 +42,44 @@ export const ContactProvider = ({ children }: { children: ReactNode }) => {
 
     const addNewContact = async (formData: TFormNewContact) => {
         try {
-            setLoading(true);
             const body = {
-                ...formData,
-                owner: client?.name,
-                clientId: client?.id,
+                ...formData
             };
             const headers = {
                 Authorization: `Bearer ${token}`,
             };
             const response = await api.post("/contacts", body, { headers });
             setCurrentContact(response.data);
+            getContacts()
             } catch (error) {
                 console.log(error);
-            } finally {
-                setLoading(false);
-        };
-    };
+    };}
 
     const handleEditContact = async (formData: TFormContactEdit, id: number | null | undefined) => {
-        const token = localStorage.getItem("@TOKEN");
         try {
-            setLoading(true);
             const response = await api.patch(
-                `/posts/${id}`,
-                { ...formData, owner: client?.name, clientId: client?.id },
+                `/contacts/${id}`,
+                { ...formData },
                 { headers: { Authorization: `Bearer ${token}` }, }
             );
             setCurrentContact(response.data);
             } catch (error) {
                 console.log(error);
-            } finally {
-                setLoading(false);
-        };
-    };
+    };}
 
     const deleteContact = async (id: number) => {
         try {
-            setLoading(true);
             const headers = {
                 Authorization: `Bearer ${token}`,
             };
+            console.log(id)
+
             await api.delete(`/contacts/${id}`, { headers });
-            getContacts();
+            console.log(id)
+            getContacts()
             } catch (error) {
                 console.log(error);
-            } finally {
-                setLoading(false);
-        };
-    };
-
-    useEffect(() => {
-        getContacts();
-    }, []);
-
-    useEffect(() => {
-        if (currentID !== 0) {
-            getSpecificContact(currentID);
-        }
-    }, [currentID]);
+    };}
 
     return (
         <ContactContext.Provider

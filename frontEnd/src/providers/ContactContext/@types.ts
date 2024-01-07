@@ -3,6 +3,10 @@ import { TFormNewContact } from "../../components/AddContactForm/newContactSchem
 import { TFormContactEdit } from "../../components/EditContactForm/editContactFormSchema";
 
 
+export interface IContactProviderProps {
+    children: React.ReactNode;
+};
+
 export interface IContactContext {
     contactList: IContact[];
     currentID: number | undefined;

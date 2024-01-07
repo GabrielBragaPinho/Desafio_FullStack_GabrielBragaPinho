@@ -5,7 +5,6 @@ import { ClientContext } from "../../providers/ClientContext/ClientContext";
 
 export const ClientInfo = () => {
     const { client } = useContext(ClientContext);
-
     return (
         <div className="relative w-[578px]">
             <p className="absolute top-[-25px] right-0 text-[11px] text-green5">// HL.PR.RF_03</p>
@@ -13,7 +12,7 @@ export const ClientInfo = () => {
             <h1 className="text base text-green2 text-[22px]">YOUR INFO</h1>
 
             <p className="text base text-green2 text-[16px]">NAME:</p>
-                <h3 className="w-[578px] h-[50px] bg-greenbg">{client?.name}</h3>
+                <h3 className="w-[578px] h-[50px] bg-greenbg text base text-green2 text-[16px]">{client?.name}</h3>
             <p className="text base text-green2 text-[16px]">E-MAIL:</p>
                 <h3 className="w-[578px] h-[50px] bg-greenbg">{client?.email}</h3>
             <p className="text base text-green2 text-[16px]">PHONE NUMBER:</p>

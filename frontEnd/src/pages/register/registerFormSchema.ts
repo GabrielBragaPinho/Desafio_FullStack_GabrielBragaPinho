@@ -11,8 +11,7 @@ export const registerFormSchema = z
       ).refine(value => value.toString(), {
         message: "Password must be a string."}),
     confirmPassword: z.string().min(8),
-    phoneNumber: z.string().min(2, "Required.").refine(value => value.toString(), {
-      message: "Password must be a string."}),
+    phoneNumber: z.string().min(2, "Required.")
   })
   .superRefine(({ confirmPassword, password }, ctx) => {
     if (confirmPassword !== password) {

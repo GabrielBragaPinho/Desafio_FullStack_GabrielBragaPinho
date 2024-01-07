@@ -31,7 +31,7 @@ export const Hub = () => {
                 <div className="w-[500px] h-[750px] flex flex-col items-center justify-between">
                     <div className="relative w-[500px] h-[425px] border border-green3 hover:bg-rmredbg">
                         <p className="absolute top-[-25px] left-[159px] text-[11px] text-green5">HSV//LOG-DATA-Q32-788-124</p>
-                        <ul className="w-[500px] h-[700px] text-rmred">
+                        <ul className="flex flex-col w-[498px] h-[423px] gap-[10px]">
                             {contactList?.map((cnt) => {
                                 return (
                                     <ContactIcon
