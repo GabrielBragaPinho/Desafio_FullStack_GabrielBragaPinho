@@ -1,6 +1,7 @@
 import app from './app';
 import { AppDataSource } from './data-source';
 
+
 AppDataSource.initialize().then((): void => {
     console.log('Server is running');
 

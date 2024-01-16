@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
-import sessionServices from "../services/session.services";
 import { SessionReturn } from "../interfaces";
+import sessionServices from "../services/session.services";
+
 
 const create = async (req: Request, res: Response): Promise<Response> => {
     const token: SessionReturn = await sessionServices.create(req.body);

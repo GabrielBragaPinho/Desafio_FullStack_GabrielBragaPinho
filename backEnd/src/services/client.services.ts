@@ -1,7 +1,7 @@
 import { Client } from "../entities";
 import { clientRepository } from "../repositories";
-import { ClientCreate, ClientRead, ClientReturn, ClientUpdate, Pagination, PaginationParams } from "../interfaces";
 import { clientReturnSchema } from "../schemas";
+import { ClientCreate, ClientRead, ClientReturn, ClientUpdate, Pagination, PaginationParams } from "../interfaces";
 
 
 const create = async (payload: ClientCreate): Promise<ClientReturn> => {
@@ -17,7 +17,8 @@ const read = async ({ nextPage, page, perPage, prevPage, order, sort }: Paginati
 };
 
 const partialUpdate = async (client: Client, payload: ClientUpdate): Promise<Client> => {
-    return await clientRepository.save({ ...client, ...payload });
+    const updatedClient = { ...client, ...payload };
+    return await clientRepository.save(updatedClient);
 };
 
 const destroy = async (client: Client): Promise<void> => {

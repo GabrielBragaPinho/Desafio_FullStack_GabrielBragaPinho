@@ -7,7 +7,7 @@ const contactSchema = z.object({
     email: z.string().max(45).email(),
     phoneNumber: z.string().max(20),
     registeredAt: z.string().or(z.date()),
-})
+});
 
 const contactCreateSchema = contactSchema.omit({
     id: true,

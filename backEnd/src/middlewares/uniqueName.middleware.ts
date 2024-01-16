@@ -4,6 +4,7 @@ import { Client } from "../entities";
 import { AppError } from "../errors";
 import { clientRepository } from "../repositories";
 
+
 export const uniqueName = async (req:Request, res:Response, next:NextFunction): Promise<void> => {
     const name: string = req.body.name;
 

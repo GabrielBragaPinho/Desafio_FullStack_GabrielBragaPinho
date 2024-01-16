@@ -1,7 +1,7 @@
 import { Contact } from "../entities";
 import { contactRepository } from "../repositories";
+import { contactReadSchema, contactReturnSchema } from "../schemas";
 import { ContactCreate, ContactRead, ContactReturn, ContactUpdate } from "../interfaces";
-import { contactReadSchema, contactRetrieveSchema, contactReturnSchema } from "../schemas";
 
 
 const create = async (payload: ContactCreate): Promise<Contact> => {
@@ -17,7 +17,7 @@ const retrieve = async (contactId: number): Promise<ContactReturn> => {
         where: { id: contactId},
     });
 
-    return contactReturnSchema.parse(contact)
+    return contactReturnSchema.parse(contact);
 };
 
 const destroy = async (contactId: number): Promise<void> => {
@@ -29,7 +29,7 @@ const destroy = async (contactId: number): Promise<void> => {
         await contactRepository.delete(contact.id);
     } else {
         throw new Error(`Contact with ID ${contactId} not found`);
-    }
+    };
 };
 
 const partialUpdate = async (contactId: number, payload: ContactUpdate): Promise<Contact> => {

@@ -1,6 +1,7 @@
-import { DataSource, DataSourceOptions } from 'typeorm';
-import path from 'path';
 import 'dotenv/config';
+import path from 'path';
+import { DataSource, DataSourceOptions } from 'typeorm';
+
 
 const settings = (): DataSourceOptions => {
   const entitiesPath: string = path.join(__dirname, './entities/**.{ts,js}');
@@ -14,7 +15,7 @@ const settings = (): DataSourceOptions => {
       synchronize: true,
       entities: [entitiesPath],
     };
-  }
+  };
 
   const dbUrl: string | undefined = process.env.DATABASE_URL;
 

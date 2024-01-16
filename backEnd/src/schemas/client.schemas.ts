@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+
 const clientSchema = z.object({
     id: z.number().positive(),
     name: z.string().max(45),

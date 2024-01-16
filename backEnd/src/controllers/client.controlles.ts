@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 
 import { Client } from "../entities";
-import { ClientReturn, Pagination } from "../interfaces";
 import { clientServices } from "../services";
+import { ClientReturn, Pagination } from "../interfaces";
 
 
 const create = async (req:Request, res:Response): Promise<Response> => {

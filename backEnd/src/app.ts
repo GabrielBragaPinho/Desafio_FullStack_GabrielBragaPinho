@@ -4,11 +4,12 @@ import "express-async-errors";
 import middlewares from './middlewares';
 import express, { Application } from 'express';
 
+import docRouter from "./routers/docs.router";
 import { clientRouter } from './routers';
+import { setupSwagger } from "./swagger/swagger";
 import { contactRouter } from './routers';
 import { sessionRouter } from './routers/session.router';
-import { setupSwagger } from "./swagger/swagger";
-import docRouter from "./routers/docs.router";
+
 
 const app: Application = express();
 

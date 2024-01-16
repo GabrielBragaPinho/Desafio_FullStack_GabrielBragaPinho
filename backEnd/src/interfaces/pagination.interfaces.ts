@@ -1,5 +1,6 @@
 import { ClientRead } from "./client.interfaces";
 
+
 type Pagination = { 
     prevPage: string | null;
     nextPage: string | null;
