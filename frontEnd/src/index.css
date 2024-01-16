@@ -1,3 +1,48 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .p {
+        @apply w-full h-[40px] bg-greenbg text-green2 text-[16px] p-2 pl-[20px] mb-2;
+    };
+    .pCenter {
+        @apply text-[17px] text-green2 font-inter py-[20px] px-[60px] pb-[20px];
+    };
+    .h4 {
+        @apply text-green2 text-[16px] pl-[20px];
+    };
+    .saveBtn {
+        @apply text-addgreen bg-addgreenbg h-11 w-20  ml-[20px] hover:bg-green5;
+    };
+    .btn2 {
+        @apply text-rmred bg-background hover:bg-rmredbg text-base font-inter font-bold w-[157px] h-[54px];
+    };    
+    .btn1 {
+        @apply text-green2 bg-background hover:bg-greenbg text-base font-inter font-bold w-[157px] h-[54px];
+    };
+    .input {
+        @apply text-[16px] bg-greenbg w-full h-[50px] pl-3;
+    };
+    .flareLeft {
+        @apply absolute top-[-25px] left-0 text-[11px] text-green5;
+    };
+    .flareRight {
+        @apply absolute top-[-25px] right-0 text-[11px] text-green5;
+    };
+    .flareCenter {
+        @apply absolute top-[-25px] left-[159px] text-[11px] text-green5;
+    };
+    .h1Y {
+        @apply text-yellow text-[44px] font-bold font-inter pt-[40px];
+    };
+    .h1G {
+        @apply text-addgreen text-[44px] font-bold font-inter pt-[40px];
+    };
+    .h3Y {
+        @apply text-yellow font-inter text-[22px] pl-[20px];
+    };
+    .h3G {
+        @apply text-addgreen font-inter text-[22px] pl-[20px];
+    };
+};

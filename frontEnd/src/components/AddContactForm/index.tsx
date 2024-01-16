@@ -25,15 +25,15 @@ export const FormNewContact = () => {
       <section className="bg-grey h-full flex flex-col items-center">
         <div className="w-[498px] h-[748px]">
           <div className="flex flex-row justify-between items-center">
-            <h1 className="text-yellow font-inter text-[22px] pl-[200px]">
+            <h3 className="h3G">
               ADD CONTACT
-            </h1>
+            </h3>
           </div>
           <form className="flex flex-col " onSubmit={handleSubmit(submit)}>
-            <label className="text-green2 text-base font-inter mb-1 pl-[20px]">NAME:</label>
+            <label className="h4">NAME:</label>
             <input
               {...register("fullName")}
-              className="border-none bg-greenbg h-11 mb-3 p-4 "
+              className="p"
               type="text"
             />
             {errors.fullName ? (
@@ -41,10 +41,10 @@ export const FormNewContact = () => {
                 {errors.fullName.message}
               </p>
             ) : null}
-            <label className="text-green2 text-base font-inter mb-1 pl-[20px]">E-MAIL:</label>
+            <label className="h4">E-MAIL:</label>
             <input
               {...register("email")}
-              className="border-none bg-greenbg h-11 mb-3 p-4"
+              className="p"
               type="text"
             />
             {errors.email ? (
@@ -52,10 +52,10 @@ export const FormNewContact = () => {
                 {errors.email.message}
               </p>
             ) : null}
-            <label className="text-green2 text-base font-inter mb-1 pl-[20px]">PHONE NUMBER:</label>
+            <label className="h4">PHONE NUMBER:</label>
             <input
               {...register("phoneNumber")}
-              className="border-none bg-greenbg h-11 mb-3 p-4 "
+              className="p"
               type="text"
             />
             {errors.phoneNumber ? (
@@ -64,7 +64,7 @@ export const FormNewContact = () => {
               </p>
             ) : null}
             <div className="flex justify-start">
-              <button type="submit" className="text-addgreen bg-addgreenbg font-inter h-11 w-20 text-base ml-[20px]">SAVE</button>
+              <button type="submit" className="saveBtn">SAVE</button>
             </div>
           </form>
         </div>
